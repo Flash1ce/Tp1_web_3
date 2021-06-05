@@ -1,0 +1,25 @@
+{% extends "master.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>Afficher Utilisateur</h1>
+
+  <ul>
+      {% for utilisateurs in lstUtilisateurs %}
+        {% if utilisateurs[3] == 1 %}
+          <li>ID: {{ utilisateurs[0] }}      Nom: {{ utilisateurs[1] }}      Admin:  Oui</li><a href="effacerUtilisateur/{{ utilisateurs[0] }}">Effacer</a>
+        {% else %}
+          <li>ID: {{ utilisateurs[0] }}      Nom: {{ utilisateurs[1] }}      Admin:  Non</li><a href="effacerUtilisateur/{{ utilisateurs[0] }}">Effacer</a>
+        {% endif %}
+      {% endfor %}
+  </ul>
+  <form action="/creer_utilisateur">
+    <button type="submit">Créer Utilisateur</button>
+  </form>
+{% endblock %}
+

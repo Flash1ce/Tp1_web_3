@@ -1,0 +1,71 @@
+{% extends "master.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Créer produit</h1>
+
+<form method="POST">
+    <!-- <label for="magasin">List magasin:</label>
+    <select name="magasin" id="magasin" style="display: block;">
+        {% for i in lstMagasin %}
+        <option value="{{ i }}">{{ i }}</option>
+       {% endfor %}
+       <option value="Tous les magasins">Tous les magasins</option>
+    </select> -->
+
+    <label for="nom">Nom</label>
+    <input style="display: block;" id="nom" name="nom" type="text">
+
+    <label for="description">description</label>
+    <input style="display: block;" id="description" name="description" type="text">
+
+    <label for="prix">Prix</label>
+    <input style="display: block;" id="prix" name="prix" type="text">
+
+    <label for="coutant">Coûtant</label>
+    <input style="display: block;" id="coutant" name="coutant" type="text">
+
+    <label for="format">Format</label>
+    <input style="display: block;" id="format" name="format" type="text">
+
+    <label for="magasin" style="display: block;">Magasin:</label>
+    <select name="magasin" id="magasin" style="display: block;">
+        <option value=>Tous les magasins</option>
+        {% for i in lstMagasin %}
+        <option value="{{ i[0] }}">{{ i[1] }}</option>
+       {% endfor %}
+    </select>
+
+    <label for="stock">Stock</label>
+    <input style="display: block;" id="stock" name="stock" type="text">
+
+    <label for="taxPro">Taxable Provincial</label>
+    <input type="checkbox" id="taxProYes" name="taxPro" value="1">
+    <input id="taxProNo" type="hidden" value="0" name="taxPro">
+
+    <label for="taxFed">Taxable Fédéral</label>
+    <input type="checkbox" id="taxFedYes" name="taxFed" value="1">
+    <input id="taxFedNo" type="hidden" value="0" name="taxFed">
+
+    <label for="active">active</label>
+    <input type="checkbox" id="activeYes" name="active" value="1">
+    <input id="activeNo" type="hidden" value="0" name="active">
+
+    <label for="categorie" style="display: block;">Catégorie:</label>
+    <select name="categorie" id="categorie" style="display: block;">
+        {% for i in lstCategories %}
+        <option value="{{ i[0] }}">{{ i[1] }}</option>
+       {% endfor %}
+    </select>
+
+    <button style="display: block;" type="submit">Créer</button>
+</form>
+
+{% endblock %}

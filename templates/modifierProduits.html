@@ -1,0 +1,64 @@
+{% extends "master.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Modifié produit</h1>
+
+<form method="POST" action="/modifierProduit/{{ idMagasin }}/{{ idProduit }}">
+
+    <label for="nom">Nom</label>
+    <input style="display: block;" id="nom" name="nom" type="text" value={{ lstProduit[1] }}>
+
+    <label for="description">description</label>
+    <input style="display: block;" id="description" name="description" type="text" value={{ lstProduit[2] }}>
+
+    <label for="prix">Prix</label>
+    <input style="display: block;" id="prix" name="prix" type="text" value={{ lstProduit[7] }}>
+
+    <label for="coutant">Coûtant</label>
+    <input style="display: block;" id="coutant" name="coutant" type="text" value={{ lstProduit[4] }}>
+
+    <label for="format">Format</label>
+    <input style="display: block;" id="format" name="format" type="text" value={{ lstProduit[6] }}>
+
+    <label for="magasin" style="display: block;">Magasin:</label>
+    <select name="magasin" id="magasin" style="display: block;">
+        <option value=>Tous les magasins</option>
+        {% for i in lstMagasin %}
+        <option value="{{ i[0] }}" {% if i[0] == lstProduit[9] %} selected {% endif %}>{{ i[1] }}</option>
+       {% endfor %}
+    </select>
+
+    <label for="stock">Stock</label>
+    <input style="display: block;" id="stock" name="stock" type="text" value={{ lstProduit[3] }}>
+
+    <label for="taxPro">Taxable Provincial</label>
+    <input type="checkbox" id="taxProYes" name="taxPro" value="1" {% if lstProduit[11] == 1 %} checked {% endif %}>
+    <input id="taxProNo" type="hidden" value="0" name="taxPro" {% if lstProduit[11] == 0 %} checked {% endif %}>
+
+    <label for="taxFed">Taxable Fédéral</label>
+    <input type="checkbox" id="taxFedYes" name="taxFed" value="1" {% if lstProduit[10] == 1 %} checked {% endif %}>
+    <input id="taxFedNo" type="hidden" value="0" name="taxFed" {% if lstProduit[10] == 0 %} checked {% endif %}>
+
+    <label for="active">active</label>
+    <input type="checkbox" id="activeYes" name="active" value="1" {% if lstProduit[5] == 1 %} checked {% endif %}>
+    <input id="activeNo" type="hidden" value="0" name="active" {% if lstProduit[5] == 0 %} checked {% endif %}>
+
+    <label for="categorie" style="display: block;">Catégorie:</label>
+    <select name="categorie" id="categorie" style="display: block;">
+        {% for i in lstCategories %}
+        <option value="{{ i[0] }}" {% if i[0] == lstProduit[8] %} selected {% endif %}>{{ i[1] }}</option>
+       {% endfor %}
+    </select>
+
+    <button style="display: block;" type="submit">Modifié</button>
+</form>
+
+{% endblock %}

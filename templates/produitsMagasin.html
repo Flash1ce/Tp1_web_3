@@ -1,0 +1,40 @@
+{% extends "master.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>List produit</h1>
+
+  <table style="border-collapse: collapse; border: 1px solid black;">
+      <tr style="border: 1px solid black;">
+          <th style="border: 1px solid black; width: 75px; text-align: center;">ID</th>
+          <th style="border: 1px solid black; width: 75px; text-align: center;">Description</th>
+          <th style="border: 1px solid black; width: 75px; text-align: center;">Prix</th>
+          <th style="border: 1px solid black; width: 75px; text-align: center;">Coûtant</th>
+          <th style="border: 1px solid black; width: 75px; text-align: center;">Taxable</th>
+          <th style="border: 1px solid black; width: 75px; text-align: center;">Catégorie</th>
+          <th style="border: 1px solid black; width: 75px; text-align: center;">Actions</th>
+      </tr>
+      {% for i in lstProduit %}
+      <tr>
+        <td style="border: 1px solid black; width: 75px; text-align: center;">{{ i[0] }}</td>
+        <td style="border: 1px solid black; width: 75px; text-align: center;">{{ i[2] }}</td>
+        <td style="border: 1px solid black; width: 75px; text-align: center;">{{ i[7] }} $</td>
+        <td style="border: 1px solid black; width: 75px; text-align: center;">{{ i[4] }}</td>
+        <td style="border: 1px solid black; width: 75px; text-align: center;">{{ i[10] }} {{ i[11] }}</td>
+        <td style="border: 1px solid black; width: 75px; text-align: center;">{{ i[8] }}</td>
+        <td style="border: 1px solid black; width: 75px; text-align: center;"><a href="/modifierProduit/{{ id }}/{{ i[0] }}">Modifier</a><a href="/effacerProduit/{{ id }}/{{ i[0] }}">Supprimer</a></td>
+      </tr>
+      {% endfor %}
+
+  </table>
+
+  <form action="/creerProduit">
+    <button type="submit">Créer produit</button>
+  </form>
+
+{% endblock %}

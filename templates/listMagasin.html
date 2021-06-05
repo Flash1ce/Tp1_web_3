@@ -1,0 +1,21 @@
+{% extends "master.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+  .important {
+    color: #336699;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<h1>List Magasin</h1>
+
+<ul>
+  <li><a href="/produitsMagasin/tous">Tout les magasins</a></li>
+  {% for i in lstMagasin %}
+  <li><a href="/produitsMagasin/{{ i[0] }}">{{ i[1] }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

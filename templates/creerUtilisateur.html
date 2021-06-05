@@ -1,0 +1,25 @@
+{% extends "master.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>Créer Utilisateur</h1>
+
+  <form action="/creer_utilisateur" method="POST">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom">
+    <label for="mdp">Mot de passe</label>
+    <input type="password" id="mdp" name="mdp">
+    <label for="admin">Admin</label>
+    <input type="checkbox" id="admin" name="admin" value="1">
+    <input id="adminNO" type="hidden" value="0" name="admin">
+
+    <button type="submit">Créer</button>
+  </form>
+
+
+{% endblock %}

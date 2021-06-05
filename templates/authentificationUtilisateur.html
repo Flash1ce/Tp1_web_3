@@ -1,0 +1,29 @@
+  <h1>Authentification</h1>
+
+  <!-- {% if message is defined %}
+    <div id="message">
+        {{message}}
+    </div>
+  {% endif %} -->
+  <form method="POST">
+    <div>
+      <label for="nom">Nom</label>
+      <input id="nom" name="nom" type="text" required></input>
+    </div>
+
+    <div>
+      <label for="password">Mot de passe</label>
+      <input id="mdp" name="mdp" type="password" required></input>
+    </div>
+
+    <div>
+      <label for="admin">Admin</label>
+      <input id="admin" name="admin" type="checkbox" value="1"></input>
+      <input id="adminNO" type="hidden" value="0" name="admin">
+    </div>
+
+    <div>
+      <button type="submit">Valider</button>
+    </div>
+  </form>
+
